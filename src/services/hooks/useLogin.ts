@@ -6,7 +6,8 @@ export const useLogin = () => {
     const { login: setLoggedInUser } = useAuth();
 
     return useMutation({
-        mutationFn: login, onSuccess: (loginResp) => {
+        mutationFn: login,
+        onSuccess: (loginResp) => {
             setLoggedInUser(loginResp.data)
         },
     })

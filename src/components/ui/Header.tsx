@@ -10,35 +10,26 @@ export const Header = () => {
   };
 
   return (
-    <header
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        background: '#AAA',
-        padding: '1em',
-      }}
-    >
-      <nav>
-        <Link to="/">
-          My Blog
-        </Link>
-      </nav>
-      <span
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: '0.25em',
-        }}
-      >
-        {userDetails?.firstName}
-        <button
-          onClick={handleLogout}
-          style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-        >
-          <LogOutIcon size="20" color="red" />
-        </button>
-      </span>
+    <header className="bg-white shadow">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          <nav>
+            <Link to="/" className="text-xl font-bold text-gray-800 hover:text-gray-600">
+              My Blog
+            </Link>
+          </nav>
+          <div className="flex items-center gap-4">
+            <span className="text-gray-700">{userDetails?.firstName}</span>
+            <button
+              onClick={handleLogout}
+              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Logout"
+            >
+              <LogOutIcon size="20" className="text-red-500" />
+            </button>
+          </div>
+        </div>
+      </div>
     </header>
   );
 };
