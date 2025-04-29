@@ -20,7 +20,7 @@ export const Header = () => {
     >
       <nav>
         <Link to="/">
-          <a>My Blog</a>
+          My Blog
         </Link>
       </nav>
       <span
