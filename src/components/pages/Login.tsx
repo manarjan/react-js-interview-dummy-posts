@@ -1,22 +1,26 @@
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router';
-import { useLogin } from '../../services/hooks/useLogin';
-import { AlertCircle, Loader2 } from 'lucide-react';
+import { useState } from "react";
+import { useLocation, useNavigate } from "react-router";
+import { useLogin } from "../../services/hooks/useLogin";
+import { AlertCircle, Loader2 } from "lucide-react";
 
 export const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const { mutateAsync: login, isError, error, isPending } = useLogin();
 
-  const handleUsernameChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleUsernameChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
     setUsername(e.target.value);
   };
 
-  const handlePasswordChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handlePasswordChange: React.ChangeEventHandler<HTMLInputElement> = (
+    e
+  ) => {
     setPassword(e.target.value);
   };
 
@@ -27,7 +31,7 @@ export const Login = () => {
       password,
     });
 
-    navigate(location.state?.from?.pathName || '/');
+    navigate(location.state?.from?.pathName || "/");
   };
 
   return (
@@ -43,16 +47,16 @@ export const Login = () => {
             <AlertCircle className="h-5 w-5 flex-shrink-0" />
             <div>
               <h3 className="text-sm font-medium">Login failed</h3>
-              <p className="text-sm mt-1">{(error as Error)?.message || 'An error occurred during login'}</p>
+              <p className="text-sm mt-1">
+                {(error as Error)?.message || "An error occurred during login"}
+              </p>
             </div>
           </div>
         )}
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
-              <label htmlFor="username" className="sr-only">
-                Username
-              </label>
+              <label htmlFor="username">Username</label>
               <input
                 id="username"
                 name="username"
@@ -60,16 +64,14 @@ export const Login = () => {
                 autoComplete="username"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Username"
+                placeholder="Enter Username"
                 value={username}
                 onChange={handleUsernameChange}
                 disabled={isPending}
               />
             </div>
             <div>
-              <label htmlFor="password" className="sr-only">
-                Password
-              </label>
+              <label htmlFor="password">Password</label>
               <input
                 id="password"
                 name="password"
@@ -77,7 +79,7 @@ export const Login = () => {
                 autoComplete="current-password"
                 required
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                placeholder="Password"
+                placeholder="Enter Password"
                 value={password}
                 onChange={handlePasswordChange}
                 disabled={isPending}
@@ -97,7 +99,7 @@ export const Login = () => {
                   Signing in...
                 </span>
               ) : (
-                'Sign in'
+                "Sign in"
               )}
             </button>
           </div>
